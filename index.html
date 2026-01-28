@@ -231,6 +231,114 @@
         .tag-blue { background: #e7f5ff; color: #1971c2; }
         .tag-orange { background: #fff4e6; color: #d9480f; }
 
+        /* Insight Card Styles */
+        .insight-card {
+            background: linear-gradient(135deg, #f6f8fa 0%, #e9ecef 100%);
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .insight-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .insight-title::before {
+            content: '💡';
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .code-family {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .family-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .family-code {
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Old Third Board Styles */
+        .otb-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .otb-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .otb-frequency {
+            flex: 1;
+            min-width: 300px;
+            background: #fff;
+            border-radius: 8px;
+        }
+
+        .freq-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .freq-item:hover {
+            border-color: var(--secondary-color);
+            background: #f8f9fa;
+        }
+
+        .freq-badge {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .freq-badge.freq-1 { background: #6c757d; } /* Grey for bad performance */
+        .freq-badge.freq-3 { background: #ffc107; color: #333; } /* Warning color */
+        .freq-badge.freq-5 { background: #28a745; } /* Green for good */
+
+        .freq-details h4 {
+            margin-bottom: 4px;
+            color: var(--primary-color);
+        }
+
+        .freq-details p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin: 0;
+        }
+
         @media screen and (max-width: 768px) {
             .evolution-container {
                 flex-direction: column;
@@ -262,7 +370,7 @@
             <h2 class="section-title">演进路径</h2>
             <div class="evolution-container">
                 <div class="evolution-step">
-                    <div class="step-code">87xxxx.OC</div>
+                    <div class="step-code">43xxxx.OC</div>
                     <div class="step-desc">场外市场<br>挂牌公司</div>
                 </div>
                 <div class="arrow">→</div>
@@ -274,6 +382,25 @@
                 <div class="evolution-step">
                     <div class="step-code bj">920xxx.BJ</div>
                     <div class="step-desc">北交所<br>上市公司</div>
+                </div>
+            </div>
+            
+            <div class="insight-card">
+                <div class="insight-title">新三板“8”字头的秘密</div>
+                <p>在 .OC 时代，代码前两位数字其实隐藏着公司的“资历”：</p>
+                <div class="code-family">
+                    <div class="family-item">
+                        <div class="family-code">43xxxx</div>
+                        <div><strong>元老级</strong><br><small>源于早期“中关村试点”，新三板的老祖宗。</small></div>
+                    </div>
+                    <div class="family-item">
+                        <div class="family-code">83xxxx</div>
+                        <div><strong>中坚力量</strong><br><small>新三板扩容鼎盛期主力，数量最庞大。</small></div>
+                    </div>
+                    <div class="family-item">
+                        <div class="family-code">87xxxx</div>
+                        <div><strong>新生代</strong><br><small>83号段用完后的延续，后期挂牌公司主力。</small></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -300,7 +427,10 @@
                     <div class="timeline-content">
                         <div class="date-badge">2021年11月15日</div>
                         <h3 class="timeline-title">北交所开市</h3>
-                        <p>精选层平移至北交所。初期沿用新三板“8”字头代码，后缀使用 .BJ，但容易混淆。</p>
+                        <p>精选层平移至北交所。初期沿用新三板“8”字头代码，后缀使用 .BJ。</p>
+                        <div style="margin-top: 10px; padding: 10px; background: #fff3cd; border-radius: 4px; font-size: 0.9rem; color: #856404;">
+                            <strong>当时的尴尬：</strong> 代码依然是 87xxxx.BJ，导致投资者很难一眼分辨是“新三板挂牌”还是“北交所上市”。
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item highlight">
@@ -347,6 +477,49 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <!-- 老三板特别篇 -->
+        <div class="section" style="border-top: 4px solid #6c757d;">
+            <h2 class="section-title">番外篇：老三板与退市公司</h2>
+            <div class="otb-container">
+                <div class="otb-info">
+                    <p style="margin-bottom: 15px;">
+                        <strong>“老三板”</strong>（两网及退市公司板块）是资本市场一个特殊的角落，主要收留原 STAQ、NET 系统公司及沪深交易所退市公司。
+                    </p>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px;">🏷️ <strong>代码特征：</strong> 绝大多数以 <code style="background: #eee; padding: 2px 5px; border-radius: 3px;">400xxx</code> 开头</li>
+                        <li style="margin-bottom: 10px;">📍 <strong>后缀标识：</strong> 通常显示为 .NQ 或 .OC</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 15px; background: #f1f3f5; border-radius: 6px; font-size: 0.9rem;">
+                        <p><strong>💡 独特的“身份勋章”</strong></p>
+                        <p>老三板公司的股票简称最后一位通常带有数字 1、3 或 5，这不是代码的一部分，而是代表了它们的<strong>交易频率</strong>。</p>
+                    </div>
+                </div>
+                <div class="otb-frequency">
+                    <div class="freq-item">
+                        <div class="freq-badge freq-5">5</div>
+                        <div class="freq-details">
+                            <h4>每周交易 5 次 (周一至五)</h4>
+                            <p>规范运作，能按时披露业绩的公司。</p>
+                        </div>
+                    </div>
+                    <div class="freq-item">
+                        <div class="freq-badge freq-3">3</div>
+                        <div class="freq-details">
+                            <h4>每周交易 3 次 (一、三、五)</h4>
+                            <p>净资产为正，但存在一定风险。</p>
+                        </div>
+                    </div>
+                    <div class="freq-item">
+                        <div class="freq-badge freq-1">1</div>
+                        <div class="freq-details">
+                            <h4>每周交易 1 次 (仅周五)</h4>
+                            <p>净资产为负，或未披露财报，风险最高。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
